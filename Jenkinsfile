@@ -16,7 +16,10 @@ pipeline {
         stage('Drop the Apache Tomcat Docker container'){
             steps {
             echo 'droping the container...'
-             sh 'docker rm -f tomcat1'
+            sh 'export DOCKER_HOST="tcp://docker-dind:2375"'
+            sh 'export DOCKER_TLS_VERIFY=""'
+
+            sh 'docker rm -f tomcat1'
             }
         }
         stage('Create the Tomcat container') {
