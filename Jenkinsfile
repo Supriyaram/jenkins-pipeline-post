@@ -16,21 +16,21 @@ pipeline {
         stage('Drop the Apache Tomcat Docker container'){
             steps {
             echo 'droping the container...'
-            sh 'docker rm -f tomcat1'
+            // sh 'docker rm -f tomcat1'
             }
         }
         stage('Create the Tomcat container') {
             steps {
             echo 'Creating the container...'
-            sh 'docker run -dit --name tomcat1 -p 9090:8080  -v /home/jenkins/tomcat-web:/usr/local/tomcat/webapps tomcat:9.0'
+            sh 'docker run -dit --name tomcat1 -p 9090:8080  -v /var/jenkins_home/tomcat-web:/usr/local/tomcat/webapps tomcat:9.0'
             }
         }
         stage('Copy the web application to the container directory') {
             steps {
                 echo 'Creating the shopping folder in the container'
-                sh 'mkdir /home/jenkins/tomcat-web/shopping'
+                sh 'mkdir var/jenkins_home/shopping'
                 echo 'Copying web application...'             
-                sh 'cp -r shopping/* /home/jenkins/tomcat-web/shopping'
+                sh 'cp -r shopping/* /var/jenkins_home/tomcat-web/shopping'
             }
         }
     }
