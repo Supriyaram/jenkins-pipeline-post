@@ -33,7 +33,7 @@ pipeline {
                 echo 'Creating the shopping folder in the container'
                 sh 'mkdir /var/jenkins_home/shopping'
                 echo 'Copying web application...'             
-                sh 'cp -r shopping/* /var/jenkins_home/tomcat-web/shopping'
+                sh 'cp -r shopping/* /var/jenkins_home/shopping'
             }
         }
     }
