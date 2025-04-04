@@ -7,7 +7,7 @@ pipeline {
             steps{
                
                 //Fisrt, drop the directory if exists
-                sh 'rm -rf /home/jenkins/tomcat-web'
+                sh 'rm -rf /var/jenkins_home/tomcat-web'
                 //Create the directory
                 sh 'mkdir /var/jenkins_home/tomcat-web'
                 
